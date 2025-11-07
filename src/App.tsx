@@ -40,42 +40,42 @@ export default function App() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Navigation Bar */}
       <nav className="bg-white border-b border-slate-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <img src={logo} alt="Brookhouse Schools" className="h-12" />
-              <div className="border-l border-slate-300 pl-4">
-                <h1 className="text-slate-900">Brookhouse Smart Campus Dashboard</h1>
-                <p className="text-slate-600 text-sm">Real-time Environmental Monitoring</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <img src={logo} alt="Brookhouse Schools" className="h-8 sm:h-12" />
+              <div className="border-l border-slate-300 pl-2 sm:pl-4">
+                <h1 className="text-slate-900 text-sm sm:text-base">Brookhouse Smart Campus Dashboard</h1>
+                <p className="text-slate-600 text-xs sm:text-sm">Real-time Environmental Monitoring</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4 w-full sm:w-auto">
               <button
                 onClick={() => setCurrentPage('dashboard')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 rounded-lg transition-colors text-sm ${
                   currentPage === 'dashboard'
                     ? 'bg-emerald-100 text-emerald-700'
                     : 'text-slate-600 hover:bg-slate-100'
                 }`}
               >
                 <LayoutDashboard className="w-4 h-4" />
-                Dashboard
+                <span className="hidden sm:inline">Dashboard</span>
               </button>
               <button
                 onClick={() => setCurrentPage('guide')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 rounded-lg transition-colors text-sm ${
                   currentPage === 'guide'
                     ? 'bg-emerald-100 text-emerald-700'
                     : 'text-slate-600 hover:bg-slate-100'
                 }`}
               >
                 <BookOpen className="w-4 h-4" />
-                Setup Guide
+                <span className="hidden sm:inline">Setup Guide</span>
               </button>
               {currentPage === 'dashboard' && (
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm text-slate-600">Live</span>
+                  <span className="text-xs sm:text-sm text-slate-600">Live</span>
                 </div>
               )}
             </div>
@@ -84,19 +84,19 @@ export default function App() {
       </nav>
 
       {currentPage === 'dashboard' ? (
-        <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
           {/* Sample Data Notice */}
-          <div className="mb-6 bg-amber-50 border border-amber-200 rounded-lg p-4">
+          <div className="mb-4 sm:mb-6 bg-amber-50 border border-amber-200 rounded-lg p-3 sm:p-4">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
-              <p className="text-amber-800 text-sm font-medium">
+              <div className="w-2 h-2 bg-amber-500 rounded-full flex-shrink-0"></div>
+              <p className="text-amber-800 text-xs sm:text-sm font-medium">
                 Note: Data being displayed is sample data for prototyping and not real-time data
               </p>
             </div>
           </div>
 
           {/* Alert Panel */}
-          <div className="mb-6">
+          <div className="mb-4 sm:mb-6">
             <AlertPanel 
               temperature={temperature}
               humidity={humidity}
@@ -105,37 +105,41 @@ export default function App() {
           </div>
 
           {/* Main Dashboard Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-4 sm:mb-6">
             <TemperatureCard temperature={temperature} />
             <HumidityCard humidity={humidity} />
             <WaterUsageCard waterUsage={waterUsage} />
           </div>
 
           {/* Sensor Map */}
-          <div className="mb-6">
+          <div className="mb-4 sm:mb-6">
             <SensorMap />
           </div>
 
           {/* Footer */}
-          <footer className="bg-white rounded-lg border border-slate-200 p-6">
+          <footer className="bg-white rounded-lg border border-slate-200 p-4 sm:p-6">
             <div className="text-center mb-4">
-              <p className="text-slate-700">
-                <span className="text-emerald-600">🌍</span> Aligned with UN Sustainable Development Goals: 
-                <span className="ml-2 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">SDG 6: Clean Water</span>
-                <span className="ml-2 px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">SDG 7: Clean Energy</span>
-                <span className="ml-2 px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm">SDG 9: Innovation</span>
-                <span className="ml-2 px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm">SDG 13: Climate Action</span>
+              <p className="text-slate-700 text-sm sm:text-base">
+                <span className="text-emerald-600">🌍</span> Aligned with UN Sustainable Development Goals:
               </p>
+              <div className="flex flex-wrap justify-center gap-2 mt-2">
+                <span className="px-2 sm:px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm">SDG 6: Clean Water</span>
+                <span className="px-2 sm:px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs sm:text-sm">SDG 7: Clean Energy</span>
+                <span className="px-2 sm:px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs sm:text-sm">SDG 9: Innovation</span>
+                <span className="px-2 sm:px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs sm:text-sm">SDG 13: Climate Action</span>
+              </div>
             </div>
             <div className="text-center pt-4 border-t border-slate-200">
-              <p className="text-slate-600">
+              <p className="text-slate-600 text-sm sm:text-base">
                 In Collaboration With <span className="text-emerald-600">Mount Kenya University</span>
               </p>
             </div>
           </footer>
         </div>
       ) : (
-        <GuidePage />
+        <div className="px-4 sm:px-6">
+          <GuidePage />
+        </div>
       )}
     </div>
   );
