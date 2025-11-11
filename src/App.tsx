@@ -40,42 +40,42 @@ export default function App() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Navigation Bar */}
       <nav className="bg-white border-b border-slate-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-2 sm:gap-4">
-              <img src={logo} alt="Brookhouse Schools" className="h-8 sm:h-12" />
-              <div className="border-l border-slate-300 pl-2 sm:pl-4">
-                <h1 className="text-slate-900 text-sm sm:text-base">Brookhouse Smart Campus Dashboard</h1>
-                <p className="text-slate-600 text-xs sm:text-sm">Real-time Environmental Monitoring</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 sm:py-4">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
+              <img src={logo} alt="Brookhouse Schools" className="h-6 sm:h-12 flex-shrink-0" />
+              <div className="border-l border-slate-300 pl-2 sm:pl-4 min-w-0">
+                <h1 className="text-slate-900 text-xs sm:text-base font-medium truncate">Brookhouse Smart Campus Dashboard</h1>
+                <p className="text-slate-600 text-xs sm:text-sm hidden sm:block">Real-time Environmental Monitoring</p>
               </div>
             </div>
-            <div className="flex items-center gap-2 sm:gap-4 w-full sm:w-auto">
+            <div className="flex items-center gap-1 sm:gap-3 flex-shrink-0">
               <button
                 onClick={() => setCurrentPage('dashboard')}
-                className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 rounded-lg transition-colors text-sm ${
+                className={`flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-md transition-colors text-xs sm:text-sm ${
                   currentPage === 'dashboard'
                     ? 'bg-emerald-100 text-emerald-700'
                     : 'text-slate-600 hover:bg-slate-100'
                 }`}
               >
-                <LayoutDashboard className="w-4 h-4" />
+                <LayoutDashboard className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span className="hidden sm:inline">Dashboard</span>
               </button>
               <button
                 onClick={() => setCurrentPage('guide')}
-                className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 rounded-lg transition-colors text-sm ${
+                className={`flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 rounded-md transition-colors text-xs sm:text-sm ${
                   currentPage === 'guide'
                     ? 'bg-emerald-100 text-emerald-700'
                     : 'text-slate-600 hover:bg-slate-100'
                 }`}
               >
-                <BookOpen className="w-4 h-4" />
-                <span className="hidden sm:inline">Setup Guide</span>
+                <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">Guide</span>
               </button>
               {currentPage === 'dashboard' && (
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                  <span className="text-xs sm:text-sm text-slate-600">Live</span>
+                <div className="flex items-center gap-1">
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                  <span className="text-xs text-slate-600 hidden sm:inline">Live</span>
                 </div>
               )}
             </div>
